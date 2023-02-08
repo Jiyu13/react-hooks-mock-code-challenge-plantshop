@@ -13,9 +13,14 @@ function PlantPage() {
     .then(plantData => setPlants(plantData))
   }, [])
 
+
+  function onAddPlant(newObj) {
+    setPlants([...plants, newObj])
+  }
+
   return (
     <main>
-      <NewPlantForm />
+      <NewPlantForm onAddPlant={onAddPlant}/>
       <Search />
       <PlantList plants={plants}/>
     </main>
