@@ -33,6 +33,8 @@ function NewPlantForm( { onAddPlant } ) {
     })
     .then(res => res.json())
     .then(newObj => onAddPlant(newObj))
+
+    setFormData(initialValue)
   }
 
   return (
