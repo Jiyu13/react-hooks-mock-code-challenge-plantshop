@@ -16,7 +16,7 @@ function PlantCard( { plant } ) {
       <h4>{name}</h4>
       <p>Price: {price}</p>
       {true ? (
-        <button className="primary">In Stock</button>
+        <button className="primary" onClick={handleStock}>In Stock</button>
       ) : (
         <button>Out of Stock</button>
       )}
