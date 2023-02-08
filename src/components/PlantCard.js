@@ -6,6 +6,9 @@ function PlantCard( { plant } ) {
 
   const [isInStock, setIsInSotck] = useState(true)
 
+  const content = isInStock ? "In Stock" : "Out of Stock"
+  const btnColor = isInStock ? "primary" : null
+
   function handleStock() {
     setIsInSotck(!isInStock)
   }
@@ -15,11 +18,7 @@ function PlantCard( { plant } ) {
       <img src={image} alt={name} />
       <h4>{name}</h4>
       <p>Price: {price}</p>
-      {true ? (
-        <button className="primary" onClick={handleStock}>In Stock</button>
-      ) : (
-        <button>Out of Stock</button>
-      )}
+      <button className={btnColor} onClick={handleStock}>{content}</button>
     </li>
   );
 }
