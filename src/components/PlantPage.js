@@ -29,6 +29,19 @@ function PlantPage() {
     setPlants(updatedItems)
   }
 
+  function onEditPrice(editedPlant) {
+    console.log(editedPlant)
+    const updatedItems = plants.map(plant => {
+      if (plant.id === editedPlant.id) {
+        return editedPlant
+      } else {
+        return plant
+      }
+    })
+    setPlants(updatedItems)
+    
+  }
+
   const searchResults = plants.filter(plant => 
     plant.name.toLowerCase().includes(searchText.toLowerCase())
   )
@@ -37,7 +50,7 @@ function PlantPage() {
     <main>
       <NewPlantForm onAddPlant={onAddPlant}/>
       <Search onSearchPlant={onSearchPlant}/>
-      <PlantList plants={searchResults} onDeletePlant={onDeletePlant}/>
+      <PlantList plants={searchResults} onDeletePlant={onDeletePlant} onEditPrice={onEditPrice}/>
     </main>
   );
 }
