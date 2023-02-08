@@ -11,6 +11,13 @@ function NewPlantForm() {
 
   const [formData, setFormData] = useState(initialValue)
 
+  function handleInput(e) {
+    const name = e.target.name
+    const value = e.target.value
+    setFormData({...formData, [name]:value})
+  }
+
+
   return (
     <div className="new-plant-form">
       <h2>New Plant</h2>
