@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewPlantForm() {
+function NewPlantForm( { onAddPlant } ) {
 
 
   const initialValue = {
@@ -17,11 +17,28 @@ function NewPlantForm() {
     setFormData({...formData, [name]:value})
   }
 
+  function handleSubmit(e) {
+    e.preventDefault()
+
+    const newPlant = {
+      name: formData.name,
+      image: formData.image,
+      price: parseInt(formData.price)
+    }
+
+    fetch("http://localhost:6001/plants", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(newPlant)
+    })
+    .then(res => res.json())
+    .then(newObj => onAddPlant(newObj))
+  }
 
   return (
     <div className="new-plant-form">
       <h2>New Plant</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input 
           type="text" 
           name="name" 
